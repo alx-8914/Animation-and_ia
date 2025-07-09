@@ -19,7 +19,7 @@ JSON = formato de dados que o N8N usa para enviar e receber informações
 [ ] Colocar na Tela o que ele respondeu    
 
 */
-let webhookUrl = "https://devalex.app.n8n.cloud/webhook/animação-css";
+let webhookUrl = "http://localhost:5678/webhook/animação-css";
 // Função que é executada quando o botão é clicado
 async function cliqueiNoBotao() {
   let textoInput = document.querySelector(".input-animacao").value;
@@ -33,19 +33,22 @@ async function cliqueiNoBotao() {
   botao.style.background = "#888"; // Muda a cor do botão para branco;
   // Verifica se o input está vazio
   let resposta = await fetch(webhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ pergunta: textoInput })
-  })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ pergunta: textoInput }),
+  });
   // Verifica se a resposta foi bem sucedida
   let resultado = await resposta.json();
 
   let info = JSON.parse(resultado.resposta);
 
-  codigo.innerHTML = info.code
-  areaResultado.innerHTML = info.preview
+  codigo.innerHTML = info.code;
+  areaResultado.innerHTML = info.preview;
 
-  document.head.insertAdjacentHTML('beforeend', "<style>" + info.style + "</style>");
+  document.head.insertAdjacentHTML(
+    "beforeend",
+    "<style>" + info.style + "</style>"
+  );
   // Verifica se o input está vazio
 
   botao.disabled = false; // Habilita o botão novamente;
