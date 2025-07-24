@@ -19,7 +19,7 @@ JSON = formato de dados que o N8N usa para enviar e receber informações
 [ ] Colocar na Tela o que ele respondeu    
 
 */
-let webhookUrl = "http://localhost:5678/webhook/animação-css";
+let webhookUrl = "https://animationcreate.netlify.app/";
 // Função que é executada quando o botão é clicado
 async function cliqueiNoBotao() {
   let textoInput = document.querySelector(".input-animacao").value;
